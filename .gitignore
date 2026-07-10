@@ -1,4 +1,7 @@
 .DS_Store
+node_modules/
+dist/
+tmp/
 __pycache__/
 .venv/
 .pytest_cache/
@@ -10,4 +13,3 @@ captures/*
 # Keep fixture samples intentional.
 samples/*
 !samples/.gitkeep
-

@@ -6,7 +6,7 @@ Date: 2026-06-30
 
 VoiceSupport 2 is useful as a librarian, but it is not a real patch editor. The goal of this project is to build a safer, clearer tool for TC-Helicon VoiceLive Play that can eventually inspect, organize, edit, and send presets without depending on the old VoiceSupport 2 interface.
 
-This draft is intentionally reverse-engineering first. The replacement editor must be based on observed VoiceSupport behavior and verified device traffic, not guesses.
+This draft is intentionally evidence-first. The replacement editor must be based on observed VoiceSupport behavior and verified device traffic, not guesses.
 
 ## Current Reference Application
 
@@ -182,7 +182,7 @@ When a user drags a Cloud preset into a workspace slot, VoiceSupport probably:
 
 This hypothesis must be verified with filesystem and MIDI captures.
 
-## Reverse Engineering Plan
+## Compatibility Research Plan
 
 The project should capture three layers separately: cloud/file, workspace/backup, and MIDI/SysEx.
 
@@ -296,7 +296,7 @@ Before any device write:
 
 The project should be built in phases.
 
-### Phase 1: Python Reverse-Engineering Toolkit
+### Phase 1: Python File Inspection Toolkit
 
 Purpose: learn the format safely.
 
@@ -496,4 +496,3 @@ Deliverables:
    - Workspace/export/backup artifact
    - Captured outgoing SysEx
 5. Start the read-only `.tch` parser only after the above capture artifacts are saved.
-
