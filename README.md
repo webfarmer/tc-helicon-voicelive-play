@@ -1,7 +1,3 @@
-<p align="center">
-  <img src="assets/readme/main.webp" alt="VoiceLive Play Workbench board editor" width="920" />
-</p>
-
 <h1 align="center">VoiceLive Play Workbench</h1>
 
 <p align="center">
