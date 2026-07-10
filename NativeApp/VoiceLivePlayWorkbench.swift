@@ -1842,7 +1842,7 @@ struct WorkbenchView: View {
     }
 
     func loadCatalog() {
-        let path = root.appendingPathComponent("src/data/generated/voiceSupportCatalog.json")
+        let path = root.appendingPathComponent("data/voiceSupportCatalog.json")
         do {
             let data = try Data(contentsOf: path)
             catalog = try JSONDecoder().decode(Catalog.self, from: data)

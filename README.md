@@ -1,58 +1,76 @@
-# VoiceLive Play 2
+<p align="center">
+  <img src="assets/readme/main.webp" alt="VoiceLive Play Workbench board editor" width="920" />
+</p>
 
-Local preset librarian and compatibility toolkit for TC-Helicon VoiceLive Play.
+<h1 align="center">VoiceLive Play Workbench</h1>
 
-The current reference application is VoiceSupport 2. It works as a basic librarian, but the goal here is to understand its file, Cloud preset, and MIDI/SysEx behavior well enough to build a safer and more capable editor.
+<p align="center">
+  A native macOS workbench for managing TC-Helicon VoiceLive Play boards, backups, cloud preset packs, custom presets, and device transfer workflows.
+</p>
 
-## Draft 1
+<p align="center">
+  <img src="https://img.shields.io/badge/macOS-14.0%2B-black?style=flat-square&logo=apple" alt="macOS 14+" />
+  <img src="https://img.shields.io/badge/SwiftUI-native-black?style=flat-square&logo=swift" alt="SwiftUI native" />
+  <img src="https://img.shields.io/badge/TC--Helicon-VoiceLive%20Play-blue?style=flat-square" alt="TC-Helicon VoiceLive Play" />
+</p>
 
-Start here:
+<p align="center">
+  <a href="#what-it-does"><strong>What It Does</strong></a> ·
+  <a href="#screenshots"><strong>Screenshots</strong></a> ·
+  <a href="#launch"><strong>Launch</strong></a> ·
+  <a href="#project-layout"><strong>Project Layout</strong></a>
+</p>
 
-```text
-docs/specs/voice-live-play-editor-draft-1.md
-```
+---
 
-## Open The App
+## What It Does
 
-This is a local macOS desktop application. It does not need a browser or a dev
-server for normal use.
+| Area | Purpose |
+|---|---|
+| **Boards** | Build and manage full VoiceLive Play slot layouts without overwriting the hardware while you experiment. |
+| **Backups** | Load saved VoiceSupport backups and use them as board sources or recovery references. |
+| **Cloud packs** | Browse imported preset packs with names, artwork, preset counts, and individual preset lists. |
+| **Custom presets** | Create reusable presets and place them into boards. |
+| **Effect builder** | Edit presets through musician-facing controls instead of raw device data. |
+| **Device workflow** | Detect the connected VoiceLive Play and keep transfer actions explicit and visible. |
 
-Double-click:
+## Screenshots
 
-```text
-VoiceLive Play Workbench.app
-```
+### Board Editor
 
-From Terminal:
+<p align="center">
+  <img src="assets/readme/main.webp" alt="VoiceLive Play Workbench board editor" width="920" />
+</p>
 
-```bash
-./VoiceLive\ Play\ Workbench.command
-```
+### Device Transfer
 
-The old React/Vite prototype is kept in the repository as reference code only.
-Use `npm run dev` only if you are deliberately working on that prototype.
+<p align="center">
+  <img src="assets/readme/send.webp" alt="VoiceLive Play Workbench device transfer workflow" width="920" />
+</p>
 
-That document covers:
+---
 
-- how VoiceSupport 2 currently behaves
-- how Cloud preset packs appear to work
-- which local files matter
-- what needs to be captured from filesystem and MIDI traffic
-- safety rules for avoiding firmware/device damage
-- a phased path from local file tools to a future macOS editor
+## Launch
 
-## Project Folders
+| Method | Action |
+|---|---|
+| **Finder** | Double-click `VoiceLive Play Workbench.app` |
+| **Terminal** | Run `./VoiceLive\ Play\ Workbench.command` |
 
-```text
-captures/       Raw MIDI, SysEx, screen, and filesystem captures
-docs/research/  Notes from compatibility experiments
-docs/specs/     Product and technical design documents
-samples/        Small copied test fixtures, not full device backups unless intentional
-scripts/        One-off research scripts and future CLI prototypes
-```
+## Project Layout
 
-## Current Principle
+| Path | Purpose |
+|---|---|
+| `NativeApp/` | SwiftUI application source. |
+| `VoiceLive Play Workbench.app/` | Built macOS app bundle. |
+| `assets/readme/` | README screenshots. |
+| `captures/` | MIDI, SysEx, screen, and filesystem captures. |
+| `data/voiceSupportCatalog.json` | Local preset pack catalog used by the app. |
+| `samples/` | Small test fixtures. |
+| `boards.json` | Local board data. |
+| `custom-presets.json` | Local custom preset data. |
+| `workspace-state.json` | Current workspace state. |
 
-Do not invent a patch format first. Observe exactly how VoiceSupport turns a Cloud preset dragged into a numbered slot into local workspace data and outgoing SysEx.
+## Device Safety
 
-The first working milestone is read-only inspection. Device writes come later, only after backup, round-trip, and SysEx validation are proven.
+The app separates local board editing from hardware writes. Build, edit, import, export, and compare locally first; push to the VoiceLive Play only when the transfer path is clear and recoverable.
